@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Open enquiry feature.
+ */
+
+include_once 'open_enquiry.features.inc';

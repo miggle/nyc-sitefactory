@@ -36,6 +36,7 @@ dependencies[] = features
 dependencies[] = libraries
 dependencies[] = entityreference
 dependencies[] = strongarm
+dependencies[] = entityform
 
 ; SEO
 dependencies[] = globalredirect
@@ -45,3 +46,7 @@ dependencies[] = metatag
 dependencies[] = admin_menu
 dependencies[] = admin_menu_toolbar
 dependencies[] = module_filter
+
+; Features
+dependencies[] = open_content
+dependencies[] = open_enquiry

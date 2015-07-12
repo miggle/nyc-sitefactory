@@ -63,14 +63,12 @@ function open_sitefactory_client_config_form($form, &$form_state) {
     '#type' => 'textfield',
     '#title' => t('Client ID'),
     '#default_value' => $client_id,
-    '#required' => TRUE,
   );
   $form['client_config']['open_sitefactory_package'] = array(
     '#type' => 'select',
     '#title' => t('Site Package'),
     '#default_value' => $site_package,
     '#options' => drupal_map_assoc($site_packages),
-    '#required' => TRUE,
   );
 
   $form['submit'] = array(
