@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Open basic feature.
+ */
+
+include_once 'open_basic.features.inc';
