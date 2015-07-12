@@ -30,6 +30,7 @@ dependencies[] = user
 dependencies[] = views
 dependencies[] = views_ui
 dependencies[] = ctools
+dependencies[] = email
 dependencies[] = token
 dependencies[] = entity
 dependencies[] = features
@@ -37,6 +38,9 @@ dependencies[] = libraries
 dependencies[] = entityreference
 dependencies[] = strongarm
 dependencies[] = entityform
+dependencies[] = context
+dependencies[] = context_ui
+dependencies[] = jquery_update
 
 ; SEO
 dependencies[] = globalredirect
@@ -47,6 +51,11 @@ dependencies[] = admin_menu
 dependencies[] = admin_menu_toolbar
 dependencies[] = module_filter
 
+; Custom
+dependencies[] = openc_helper
+
 ; Features
 dependencies[] = open_content
 dependencies[] = open_enquiry
+dependencies[] = open_basic
+dependencies[] = open_global_settings

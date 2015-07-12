@@ -1,0 +1,50 @@
+<?php
+
+/**
+ * Implements hook_menu().
+ */
+function openc_helper_menu() {
+  $items['admin/open_helper'] = array(
+    'title' => 'Open Sitefactory',
+    'description' => 'Defines global settings and site configuration',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('openc_helper_admin_form'),
+    'access arguments' => array('administer fmg configuration'),
+    'weight' => -1,
+  );
+  $items['admin/open_helper/settings'] = array(
+    'title' => 'Settings',
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+    'weight' => -10,
+  );
+
+  return $items;
+}
+
+function openc_helper_admin_form($form, $form_state) {
+  $form['client_config'] = array(
+    '#type' => 'fieldset',
+    '#title' => 'Client Configuration',
+  );
+  $form['client_config']['open_sitefactory_client_id'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Client ID'),
+    '#default_value' => variable_get('open_sitefactory_client_id'),
+  );
+
+  // set our package options
+  $site_packages = array(
+    'basic',
+    'advanced',
+    'custom',
+  );
+
+  $form['client_config']['open_sitefactory_package'] = array(
+    '#type' => 'select',
+    '#title' => t('Site Package'),
+    '#default_value' => variable_get('open_sitefactory_package'),
+    '#options' => drupal_map_assoc($site_packages),
+  );
+
+  return system_settings_form($form);
+}

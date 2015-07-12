@@ -1,0 +1,5 @@
+name = "Openc Helper"
+description = "Helper module for client config area"
+package = "Open Custom"
+project = "openc_helper"
+core = "7.x"
