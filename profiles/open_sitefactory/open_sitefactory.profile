@@ -57,7 +57,7 @@ function open_sitefactory_client_config_form($form, &$form_state) {
 
   $form['client_config'] = array(
     '#type' => 'fieldset',
-    '#title' => 'Dealer Configuration',
+    '#title' => 'Client Configuration',
   );
   $form['client_config']['open_sitefactory_client_id'] = array(
     '#type' => 'textfield',
@@ -105,8 +105,7 @@ function open_sitefactory_example_content_form($form, &$form_state) {
     '#title' => st('Install example content'),
     '#description' => st('Enable the openc_content module - this will register and run migrations to populate the site with default content.'),
     '#type' => 'checkbox',
-    '#default_value' => (isset($form_state['values']['example_content'])) ?
-      $form_state['values']['example_content'] : '',
+    '#default_value' => 1,
   );
 
   $form['submit'] = array(
