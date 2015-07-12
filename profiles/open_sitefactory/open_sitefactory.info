@@ -1,0 +1,6 @@
+name = Open Sitefactory
+description = Install required modules for site.
+core = 7.x
+
+; Dependencies
+dependencies[] = master_dependency

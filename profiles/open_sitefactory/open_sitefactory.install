@@ -1,0 +1,64 @@
+<?php
+/**
+ * Implements hook_install().
+ *
+ * Perform actions to set up the site for this profile.
+ */
+function open_sitefactory_install() {
+
+  // define an admin theme
+  $admin_theme = 'shiny';
+
+  // enable all themes
+  $theme_enable = array(
+    $admin_theme => $admin_theme,
+    'bootstrap' => 'bootstrap',
+    'theme' => 'open_sitefactory',
+  );
+  theme_enable($theme_enable);
+
+  // activate admin theme when editing a node
+  variable_set('admin_theme', 'shiny');
+  variable_set('theme_default', 'open_sitefactory');
+  variable_set('node_admin_theme', '1');
+  watchdog('install', 'enabled required themes', array(), WATCHDOG_INFO);
+
+  // Revert all features once installed.
+  open_sitefactory_features_revert();
+}
+
+/**
+ * @param $modules
+ *
+ * Revert specified features.
+ */
+function open_sitefactory_features_revert($modules = array()) {
+  module_load_include('inc', 'features', 'features.export');
+  features_include();
+
+  if (empty($modules)) {
+    // assume revert all
+    $features = array_keys(features_get_features());
+    foreach ($features as $key) {
+      if (strstr($key, 'kw_')) {
+        $modules[] = $key;
+      }
+    }
+  }
+  if (!empty($modules)) {
+    foreach ($modules as $module) {
+      if (($feature = feature_load($module, TRUE)) && module_exists($module)) {
+        $components = array();
+        // Forcefully revert all components of a feature.
+        foreach (array_keys($feature->info['features']) as $component) {
+          if (features_hook($component, 'features_revert')) {
+            $components[] = $component;
+          }
+        }
+      }
+      foreach ($components as $component) {
+        features_revert(array($module => array($component)));
+      }
+    }
+  }
+}
