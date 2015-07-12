@@ -1,0 +1,11 @@
+name = "Openc Content"
+description = "Imports example content on install"
+package = "Open Custom"
+project = "openc_content"
+core = "7.x"
+
+files[] = migrate/classes/terms/tags.inc
+files[] = migrate/classes/nodes/pages.inc
+
+dependencies[] = migrate
+dependencies[] = migrate_ui

@@ -1,0 +1,28 @@
+<?php
+
+/**
+ * Implements hook_install().
+ */
+function openc_content_install() {
+
+  // list migration classes to be registered on install
+  $migrations = array(
+    // terms
+    'OpenTagsTermMigration',
+    // pages
+    'OpenPagesNodeMigration',
+  );
+
+  // register migrations
+  migrate_static_registration($migrations);
+
+  // iterate over migrations
+  foreach ($migrations as $migrations_name) {
+    $migration = Migration::getInstance($migrations_name);
+
+    // Import!
+    $migrate_result = $migration->processImport();
+    // log result for this migration
+    watchdog('openc_content', $migrate_result, array(), WATCHDOG_INFO);
+  }
+}

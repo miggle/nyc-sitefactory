@@ -1,0 +1,29 @@
+<?php
+
+/**
+ * Implements hook_migrate_api().
+ */
+function openc_content_migrate_api() {
+  $api = array(
+    'api' => 2,
+    'groups' => array(
+      'open_terms' => array(
+        'title' => t('Open Sitefactory default terms'),
+      ),
+      'open_pages' => array(
+        'title' => t('Open Sitefactory default pages'),
+      )
+    ),
+    'migrations' => array(
+      'OpenTagsTermMigration' => array(
+        'class_name' => 'OpenTagsTermMigration',
+        'group_name' => 'open_terms',
+      ),
+      'OpenPagesNodeMigration' => array(
+        'class_name' => 'OpenPagesNodeMigration',
+        'group_name' => 'open_pages',
+      ),
+    ),
+  );
+  return $api;
+}
