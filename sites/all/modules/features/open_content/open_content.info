@@ -18,6 +18,7 @@ features[user_permission][] = delete any open_content content
 features[user_permission][] = delete own open_content content
 features[user_permission][] = edit any open_content content
 features[user_permission][] = edit own open_content content
+features[variable][] = field_bundle_settings_node__open_content
 features[variable][] = menu_options_open_content
 features[variable][] = menu_parent_open_content
 features[variable][] = node_options_open_content
