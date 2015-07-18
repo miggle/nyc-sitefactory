@@ -44,7 +44,7 @@ function open_sitefactory_client_config_form($form, &$form_state) {
   }
   // set defaults
   else {
-    $client_id = NULL;
+    $client_id = 123;
     $site_package = 'basic';
   }
 
